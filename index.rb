@@ -10,7 +10,7 @@ puts "Listening at #{ENV["FLOWROUTE_CALLBACK_PATH"]}..."
 
 post ENV["FLOWROUTE_CALLBACK_PATH"] do
   msg = JSON.parse(request.body.read)
-  puts "#{msg['from']}: #{msg['body']}"
+  puts "#{msg['data']['attributes']['from']}: #{msg['data']['attributes']['body']}"
 
   uri = URI.parse("https://api.flowroute.com/v2/messages")
   request = Net::HTTP::Post.new(uri)
