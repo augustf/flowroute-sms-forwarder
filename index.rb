@@ -19,7 +19,7 @@ post ENV["FLOWROUTE_CALLBACK_PATH"] do
   request.body = JSON.dump({
     "to" => ENV["FLOWROUTE_FORWARD_NUMBER"],
     "from" => ENV["FLOWROUTE_FROM_DID"],
-    "body" => "#{msg['from']}: #{msg['body']}"
+    "body" => "#{msg['data']['attributes']['from']}: #{msg['data']['attributes']['body']}"
   })
 
   req_options = {
